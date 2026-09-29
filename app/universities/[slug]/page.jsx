@@ -1,0 +1,7 @@
+import { notFound } from "next/navigation"; import { universities } from "@/data/site"; import Link from "next/link";
+export default async function UniversityPage({ params }) {
+ const { slug } = await params;
+ const university = universities.find((item) => item.slug === slug);
+ if (!university) return notFound();
+ return <section className="section"><div className="container"><div className="pill">📍 {university.city}</div><h1 className="display mt-5">{university.name}</h1><p className="lead mt-5 max-w-3xl">{university.note}</p><div className="mt-6 rounded-2xl border border-amber-200 bg-amber-50 p-5 text-sm leading-6 text-amber-950">This is an illustrative directory profile, not a verified institution listing. Confirm recognition, course availability, fees and admissions directly with official sources.</div><div className="mt-10 grid-auto">{["About University","Campus","Courses","Faculty","Laboratories","Hospital / Clinical Facilities","Hostel","Cafeteria","Indian Students","Fees","Admission Requirements","Location","Videos","Photo Gallery","Recognition / Accreditation","Official Website"].map((item) => <div className="card p-6" key={item}><h2 className="font-black">{item}</h2><p className="mt-2 text-sm text-slate-500">Information pending verification from official university sources.</p></div>)}</div><Link href="/verify" className="btn btn-primary mt-8">Open Verification Checklist</Link></div></section>;
+}

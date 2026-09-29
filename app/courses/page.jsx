@@ -1,0 +1,2 @@
+import { courses } from "@/data/site"; import { CourseCard } from "@/components/CourseCard"; import { SectionTitle } from "@/components/SectionTitle";
+export default function Courses(){return <section className="section"><div className="container"><SectionTitle eyebrow="Course Directory" title="Study programmes in Philippines" description="Organise the catalogue by healthcare, professional education, business, technology, STEM and hospitality."/><div className="grid-auto">{courses.map(c=><CourseCard key={c.slug} course={c}/>)}</div></div></section>}
